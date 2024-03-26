@@ -32,13 +32,13 @@ void cria_pessoa() {
         }
     }
     printf("Digite o nome do aluno: ");
-    scanf("%s", novo.name);
+    scanf("%s%*c", novo.name);
     printf("Digite o curso do aluno: ");
-    scanf("%s", novo.curso);
+    scanf("%s%*c", novo.curso);
     while(1){
     printf("Digite a nota 1 do aluno: ");
 
-    scanf("%f", &novo.nota1);
+    scanf("%f%*c", &novo.nota1);
     if(novo.nota1 >= 0 && novo.nota1 <= 10){
         break;
     }
@@ -47,7 +47,7 @@ void cria_pessoa() {
     while(1){
     printf("Digite a nota 2 do aluno: ");
 
-    scanf("%f", &novo.nota2);
+    scanf("%f%*c", &novo.nota2);
     if(novo.nota2 >= 0 && novo.nota2 <= 10){
         break;
     }
@@ -67,7 +67,9 @@ void mostra_pessoas() {
     for (int i = 0; i < qtd; i++) {
         struct Pessoa atual = pessoas[i];
         float media = (atual.nota1 + atual.nota2) / 2.0;
-        printf("\nMatricula: %d\nNome: %s\nCurso: %s\nNota1: %.2f\nNota2: %.2f\nMedia:%.2f\n", atual.matricula, atual.name, atual.curso, atual.nota1, atual.nota2, media);
+        printf("[");
+        printf("Nome: %s, Matricula: %d, Curso: %s, N1: %.2f, N2: %.2f, Media: %.2f", atual.name, atual.matricula, atual.curso, atual.nota1, atual.nota2, media);
+        printf("]\n");
     }
 }
 
