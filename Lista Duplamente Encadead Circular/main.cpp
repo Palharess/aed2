@@ -53,20 +53,45 @@ int main(){
             insere_lista(pessoa, lista);
         }
         else if(escolha == 2){
+            if(pega_qtd(lista) == 0){
+                printf("Lista vazia!\n");
+                break;
+            }
             mostra_lista(lista);
         }
         else if(escolha == 3){
+            if(pega_qtd(lista) == 0){
+                printf("Lista vazia!\n");
+                break;
+            }
             printf("Digite o nome da pessoa que vc deseja alterar: ");
             scanf("%s", Nome);
-            Pessoa achou = achar_pessoa(lista, Nome);
-            muda_dados(achou);     
+            Pessoa p = achar_pessoa(lista,Nome);
+            printf("Deseja alterar %s? (S/N): ", pega_nome(p));
+            char resposta;
+            scanf(" %c", &resposta);
+            if (resposta != 'S') {
+                break;
+            }
+            muda_dados(p);     
 
             
         }
         else if(escolha == 4){
+            char resposta;
+            if(pega_qtd(lista) == 0){
+                printf("Lista vazia!\n");
+                break;
+            }
             printf("Digite o nome da pessoa que vc deseja remover: ");
             scanf("%s", Nome);
             L_NODE achou = achar_pessoa_node(lista, Nome);
+            Pessoa p = achar_pessoa(lista,Nome);
+            printf("Deseja excluir %s? (S/N): ", pega_nome(p));
+            scanf(" %c", &resposta);
+            if (resposta != 'S') {
+                break;
+            }
             remove_elemento(pega_chave(achou), lista);
         }
         else if(escolha == 5){

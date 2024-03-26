@@ -39,10 +39,23 @@ void muda_dados(Pessoa pessoa){
     scanf("%s", Nome);
     printf("Curso: ");
     scanf("%s", Curso);
-    printf("Nota 1: ");
-    scanf("%lf%*c", &Nota1);
-    printf("Nota 2: ");
-    scanf("%lf%*c", &Nota2);
+    while(1){
+        printf("Nota 1: ");
+        scanf("%lf%*c", &Nota1);
+        if(Nota1 >= 0 && Nota1 <= 10){
+            break;
+        }
+        printf("Nota invalida!\n");
+    }
+    
+    while(1){
+        printf("Nota 2: ");
+        scanf("%lf%*c", &Nota2);
+        if(Nota2 >= 0 && Nota2 <= 10){
+            break;
+        }
+        printf("Nota invalida!\n");
+    }
     strcpy(pessoa->Matricula, Matricula);
     strcpy(pessoa->Nome, Nome);
     strcpy(pessoa->Curso, Curso);
@@ -56,4 +69,15 @@ char * pega_matricula(Pessoa pessoa){
 
 double media(Pessoa pessoa){
     return (pessoa->Nota1 + pessoa->Nota2)/2.0;
+}
+
+double pega_n1(Pessoa pessoa){
+    return pessoa->Nota1;
+}
+double pega_n2(Pessoa pessoa){
+    return pessoa->Nota2;
+}
+
+char * pega_curso(Pessoa pessoa){
+    return pessoa->Curso;
 }

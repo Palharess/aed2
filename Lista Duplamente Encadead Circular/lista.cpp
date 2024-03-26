@@ -59,19 +59,21 @@ void insere_lista(Pessoa pessoa, L_LIST lista)
 
 void mostra_node(L_NODE node, L_NODE head)
 {
-    printf("%s ", pega_nome(node->pessoa));
+    printf("[");
+    printf("Nome: %s, Matricula: %s, Curso: %s, N1: %.2lf, N2: %.2lf, Media: %.2lf", pega_nome(node->pessoa),pega_matricula(node->pessoa),pega_curso(node->pessoa),pega_n1(node->pessoa),pega_n2(node->pessoa),media(node->pessoa));
     if (node->next == head)
     {
         return;
     }
+    printf("]\n");
     mostra_node(node->next, head);
 }
 
 void mostra_lista(L_LIST lista)
 {
-    printf("[");
-    if (lista->head != NULL)
-        mostra_node(lista->head, lista->head);
+    
+    if (lista->head != NULL) mostra_node(lista->head, lista->head);
+
     printf("]\n");
 }
 
